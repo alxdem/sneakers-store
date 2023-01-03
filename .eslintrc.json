@@ -1,0 +1,10 @@
+{
+    "extends": "next/core-web-vitals",
+    "rules": {
+        "semi": "warn",
+        "semi-style": [
+            "error",
+            "last"
+        ]
+    }
+}
