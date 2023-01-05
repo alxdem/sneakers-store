@@ -5,6 +5,10 @@
         "semi-style": [
             "error",
             "last"
+        ],
+        "quotes": [
+            "warn",
+            "single"
         ]
     }
 }

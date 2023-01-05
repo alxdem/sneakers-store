@@ -1,0 +1,8 @@
+.creator {
+    display: flex;
+    align-items: center;
+}
+
+.socLink {
+    display: inline-flex;
+}
