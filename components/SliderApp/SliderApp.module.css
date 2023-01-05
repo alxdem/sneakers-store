@@ -1,0 +1,47 @@
+.slider {
+    height: 30vw;
+}
+
+.slide {
+    position: relative;
+}
+
+.slideBg {
+    object-fit: cover;
+}
+
+.slideLink {
+    display: block;
+    position: relative;
+    height: 100%;
+}
+
+.sliderInner {
+    position: relative;
+}
+
+.sliderInner::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #333333;
+}
+
+@media (max-width: 900px) {
+    .slider {
+        height: 40vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider {
+        height: 250px;
+    }
+
+    .swiper-button-prev {
+        display: none !important;
+    }
+}
