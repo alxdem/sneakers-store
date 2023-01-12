@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Swiper as SwiperType } from 'swiper';
-import { SliderAppProps, SlideAppProps } from './SliderApp.props';
+import { SliderAppProps, SlideInterface } from './SliderApp.props';
 import styles from './SliderApp.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,21 +11,20 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-
 export const SliderApp = ({ items }: SliderAppProps): JSX.Element => {
     const swiperRef = useRef<SwiperType>();
     const [isStart, setIsStart] = useState<boolean>(true);
     const [isEnd, setIsEnd] = useState<boolean>(false);
 
-    const createSlideInner = (slider: SlideAppProps) => {
+    const createSlideInner = (slider: SlideInterface) => {
         switch (slider.type) {
             case 'simple':
                 return (
-                    <Link className={styles.slideLink} href={slider.href || ''}>
-                        {slider.bgImageUrl &&
+                    <Link className={styles.slideLink} href={slider.url || ''}>
+                        {slider.image &&
                             <Image
                                 className={styles.slideBg}
-                                src={slider.bgImageUrl}
+                                src={slider.image.lg || ''}
                                 alt=''
                                 fill
                             />}
@@ -89,10 +88,10 @@ export const SliderApp = ({ items }: SliderAppProps): JSX.Element => {
                             }
                         </Box>
 
-                        {slider.bgImageUrl &&
+                        {slider.image &&
                             <Image
                                 className={styles.slideBg}
-                                src={slider.bgImageUrl}
+                                src={slider.image.lg || ''}
                                 alt=''
                                 fill
                             />
@@ -103,8 +102,6 @@ export const SliderApp = ({ items }: SliderAppProps): JSX.Element => {
             default:
                 return <></>;
         }
-
-
     };
 
     return (
