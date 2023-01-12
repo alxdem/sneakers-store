@@ -8,6 +8,7 @@
 
 .slideBg {
     object-fit: cover;
+    object-position: right;
 }
 
 .slideLink {

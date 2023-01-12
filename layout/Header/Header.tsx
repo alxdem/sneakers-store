@@ -12,7 +12,7 @@ export const Header = ({ }: HeaderProps) => {
             < Toolbar >
                 <Link href='/' className={styles.logo}>
                     <Image
-                        src='./icons/logo.svg'
+                        src='../icons/logo.svg'
                         alt='Sneakers store'
                         width={46}
                         height={46}

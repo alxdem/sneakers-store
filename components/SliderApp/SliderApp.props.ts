@@ -1,12 +1,15 @@
 export interface SliderAppProps {
-    items: SlideAppProps[];
+    items: SlideInterface[];
 };
 
-export interface SlideAppProps {
+export interface SlideInterface {
     id: string;
-    type: 'simple' | 'withContent';
-    href?: string;
-    bgImageUrl?: string;
+    type: string;
+    url?: string;
+    image?: {
+        lg?: string;
+        sm?: string;
+    },
     text?: string;
     link?: {
         url: string;
