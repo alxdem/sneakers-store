@@ -1,12 +1,19 @@
-import { AppBar, Badge, Box, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { AppBar, Badge, Box, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styles from './Header.module.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { HeaderProps } from './Header.props';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { ColorModeContext } from '../../context/colorMode.context';
 
 export const Header = ({ }: HeaderProps) => {
+    const theme = useTheme();
+    const colorMode = useContext(ColorModeContext);
+
     return (
         <AppBar enableColorOnDark={false} position='sticky'>
             < Toolbar >
@@ -28,6 +35,16 @@ export const Header = ({ }: HeaderProps) => {
                 </Link>
 
                 <Box sx={{ flexGrow: 1 }} />
+
+                <IconButton
+                    sx={{ opacity: 0.6 }}
+                    size='large'
+                    aria-label='toggle color mode'
+                    color='inherit'
+                    onClick={colorMode.toggleColorMode}
+                >
+                    {theme.palette.mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
+                </IconButton>
 
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <IconButton size='large' aria-label='show 4 new mails' color='inherit'>

@@ -44,7 +44,11 @@ export const CardProduct = ({ photo, title, badges, subtitle, price, salePrice, 
                     {createBadges()}
 
                     <Typography variant="body1">{title}</Typography>
-                    {subtitle && <Typography variant="body2" color='primary.dark'>{subtitle}</Typography>}
+                    {subtitle && <Typography variant="body2" sx={{
+                        opacity: 0.6,
+                    }}>
+                        {subtitle}
+                    </Typography>}
 
                     <Box sx={{
                         display: 'flex',
