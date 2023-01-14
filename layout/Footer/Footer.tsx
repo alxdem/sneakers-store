@@ -12,7 +12,8 @@ export const Footer = ({ }: FooterProps): JSX.Element => {
                 typography: 'subtitle2',
                 borderTop: 1,
                 borderColor: 'primary.main',
-                bgcolor: 'primary.main'
+                bgcolor: 'primary.main',
+                color: 'primary.contrastText',
             }}
         >
             <Container maxWidth='xl'>

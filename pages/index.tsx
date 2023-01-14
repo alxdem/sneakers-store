@@ -26,7 +26,7 @@ export default function Home({ meta, mainSlider, recommend }: MainPageInterface)
                     my: { xs: 3, sm: 5, lg: 6 }
                 }}>
                     <Container maxWidth='xl'>
-                        <Typography component='h2' variant='h4'>Recommended</Typography>
+                        <Typography component='h2' variant='h4' color='text.main'>Recommended</Typography>
                         <Grid container
                             columnSpacing={2}
                             rowSpacing={2}
