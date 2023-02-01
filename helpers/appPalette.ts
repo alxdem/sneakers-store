@@ -68,8 +68,8 @@ export const appPalette = {
             contrastText: '#f5f5f5',
         },
         text: {
-            light: '#616161',
-            main: '#212121',
+            light: '#ffffff',
+            main: '#e8eaf6',
             dark: '#000000',
         }
     },

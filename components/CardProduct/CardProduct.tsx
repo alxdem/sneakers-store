@@ -2,7 +2,7 @@ import { Card, CardMedia, CardContent, Typography, Box, Rating } from '@mui/mate
 import Link from 'next/link';
 import { ProductBadge } from '../ProductBadge/ProductBadge';
 import { CardProductProps } from './CardProduct.props';
-
+import Image from 'next/image';
 
 export const CardProduct = ({ photo, title, badges, subtitle, price, salePrice, rating, url }: CardProductProps) => {
     const createBadges = () => {
@@ -30,11 +30,20 @@ export const CardProduct = ({ photo, title, badges, subtitle, price, salePrice, 
                 display: 'flex',
                 flexDirection: 'column',
             }}>
-                <CardMedia
-                    src={photo}
-                    component='img'
-                    title={title}
-                />
+                <CardMedia sx={{
+                    position: 'relative',
+                    pt: '75%'
+                }}>
+                    <Image
+                        src={photo || ''}
+                        alt=''
+                        fill
+                        sizes="(max-width: 600px) 100vw,
+                                (max-width: 900px) 50vw,
+                                25vw"
+                    />
+                </CardMedia>
+
                 <CardContent sx={{
                     display: 'flex',
                     flexDirection: 'column',
