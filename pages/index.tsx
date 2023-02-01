@@ -12,6 +12,48 @@ export default function Home({ meta, mainSlider, recommend }: MainPageInterface)
     const { title, description } = meta || {};
     const { items: sliderItems } = mainSlider || {};
 
+    const createRecommended = () => {
+        if (!recommend || recommend.length < 1) return <></>;
+
+        return (
+            <Box sx={{
+                my: { xs: 3, sm: 5, lg: 6 }
+            }}>
+                <Container maxWidth='xl'>
+                    <Typography component='h2' variant='h4' color='text.main'>Recommended</Typography>
+                    <Grid container
+                        columnSpacing={2}
+                        rowSpacing={2}
+                        mt={{ xs: 2 }}
+                    >
+                        {recommend.map(item => {
+                            const { title, subtitle, gender, salePrice, price, rating, badges, modelId, photos } = item.product || {};
+                            const createPreview = () => {
+                                return photos && photos[0] ? photos[0]?.lg : '';
+                            };
+
+                            return (
+                                <Grid key={item._id} item xs={12} sm={6} md={3}>
+                                    <CardProduct
+                                        photo={createPreview()}
+                                        title={title}
+                                        subtitle={subtitle}
+                                        gender={gender}
+                                        salePrice={salePrice}
+                                        price={price}
+                                        rating={rating}
+                                        badges={badges}
+                                        url={`${modelId}/${item._id}`}
+                                    />
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </Container>
+            </Box>
+        );
+    };
+
     return (
         <Layout>
             <Head>
@@ -21,36 +63,7 @@ export default function Home({ meta, mainSlider, recommend }: MainPageInterface)
 
             {sliderItems && Boolean(sliderItems.length) && <SliderApp items={sliderItems} />}
 
-            {recommend && Boolean(recommend.length > 0) &&
-                <Box sx={{
-                    my: { xs: 3, sm: 5, lg: 6 }
-                }}>
-                    <Container maxWidth='xl'>
-                        <Typography component='h2' variant='h4' color='text.main'>Recommended</Typography>
-                        <Grid container
-                            columnSpacing={2}
-                            rowSpacing={2}
-                            mt={{ xs: 2 }}
-                        >
-                            {recommend.map(product => (
-                                <Grid key={product._id} item xs={12} sm={6} md={3}>
-                                    <CardProduct
-                                        photo='/pics/sneakers/asics-kinsei-blast-le-blue.jpg'
-                                        title={product.title}
-                                        subtitle={product.subtitle}
-                                        gender={product.gender}
-                                        salePrice={product.salePrice}
-                                        price={product.price}
-                                        rating={product.rating}
-                                        badges={product.badges}
-                                        url={`${product.modelId}/${product._id}`}
-                                    />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Container>
-                </Box>
-            }
+            {createRecommended()}
         </Layout>
     );
 }
@@ -61,7 +74,7 @@ export const getStaticProps: GetStaticProps<MainPageInterface> = async () => {
 
     const products = await axios.get(API.products, {
         params: {
-            isRecommend: true
+            'product.isRecommend': true
         }
     });
 
