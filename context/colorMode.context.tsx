@@ -3,7 +3,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { createContext, PropsWithChildren, useMemo, useState } from 'react';
 import { appPalette } from '../helpers/appPalette';
 
-const getDesignTokens = (mode: PaletteMode) => ({
+const getDesignTokens: any = (mode: PaletteMode) => ({
+    // TODO: getDesignTokens заменить any на правильный тип. Нужно расширить PaletteMode
     palette: {
         mode,
         ...(mode === 'light'

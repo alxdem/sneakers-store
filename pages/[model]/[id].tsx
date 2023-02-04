@@ -17,7 +17,6 @@ import { AccordionApp } from '../../components/AccordionApp/AccordionApp';
 
 export default function ProductPage({ meta, product, breadcrumbs }: ProductPageInterface) {
     // TODO: Переписать интерфейс для страницы 
-    // console.log('product', product);
 
     const { title: metaTitle, description: metaDescription } = meta || {};
     const { title, subtitle, salePrice, price, rating, sizes, photos, info } = product || {};
@@ -195,8 +194,11 @@ export default function ProductPage({ meta, product, breadcrumbs }: ProductPageI
 export const getStaticPaths: GetStaticPaths = async () => {
     let paths: string[] = [];
 
-    const { data } = await axios.get<CardProductProps[]>(API.products);
-    paths = paths.concat(data.flatMap(product => `/${product.modelId}/${product._id}`));
+    const { data } = await axios.get<any[]>(API.products);
+    paths = paths.concat(data.flatMap(info => {
+        return `/${info.product.modelId}/${info._id}`;
+    }));
+
 
     return {
         paths,

@@ -6,5 +6,6 @@ export interface BreadcrumbsAppProps extends DetailedHTMLProps<HTMLAttributes<HT
 
 export interface BreadcrumbsAppItemProps {
     anchor: string;
+    _id?: string;
     url?: string;
 }
