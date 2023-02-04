@@ -3,7 +3,7 @@ export interface SliderProductProps {
 }
 
 export interface SlideProduct {
-    _id: string;
+    _id?: string;
     lg: string;
     sm?: string;
 }

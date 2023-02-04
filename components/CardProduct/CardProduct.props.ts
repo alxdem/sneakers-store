@@ -1,10 +1,8 @@
 export interface CardProductProps {
     _id?: string;
     title: string;
-    sizes?: SizeProps[];
     url?: string;
     subtitle?: string;
-    brand?: string;
     photo?: string;
     photos?: {
         id: string;
@@ -15,18 +13,6 @@ export interface CardProductProps {
     modelId?: string;
     badges?: string[];
     rating?: number;
-    gender: 'M' | 'W';
-    purpose?: string[];
-    isDiscount?: boolean;
-    isRecommend?: boolean;
-    info?: {
-        title: string;
-        text: string;
-    }[];
 }
 
-export type SizeProps = {
-    value: string;
-    text: string;
-    isAvailable: boolean;
-}
+// TODO: photos - убрать и ипользовать ключ photo. Добавить картинки ключу photo

@@ -27,7 +27,7 @@ export default function Home({ meta, mainSlider, recommend }: MainPageInterface)
                         mt={{ xs: 2 }}
                     >
                         {recommend.map(item => {
-                            const { title, subtitle, gender, salePrice, price, rating, badges, modelId, photos } = item.product || {};
+                            const { title, subtitle, salePrice, price, rating, badges, modelId, photos } = item.product || {};
                             const createPreview = () => {
                                 return photos && photos[0] ? photos[0]?.lg : '';
                             };
@@ -38,7 +38,6 @@ export default function Home({ meta, mainSlider, recommend }: MainPageInterface)
                                         photo={createPreview()}
                                         title={title}
                                         subtitle={subtitle}
-                                        gender={gender}
                                         salePrice={salePrice}
                                         price={price}
                                         rating={rating}
@@ -74,8 +73,8 @@ export const getStaticProps: GetStaticProps<MainPageInterface> = async () => {
 
     const products = await axios.get(API.products, {
         params: {
-            'product.isRecommend': true
-        }
+            'product.isRecommend': true,
+        },
     });
 
     const recommend = products.data || {};

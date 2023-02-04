@@ -4,17 +4,48 @@ import { SliderAppProps } from '../components/SliderApp/SliderApp.props';
 import { Meta } from './common.interfaces';
 
 export interface PageInterface {
-    // Перенести сюда Meta и breadcrumbs и расширять все страницы от этого интерфейса
     meta?: Meta;
-    breadcrumbs?: BreadcrumbsAppProps,
-};
+    breadcrumbs?: BreadcrumbsAppProps;
+}
 
 export interface MainPageInterface extends PageInterface {
     mainSlider?: SliderAppProps;
-    recommend?: ProductPageInterface[];
-};
+    recommend?: {
+        _id: string;
+        product: CardProductProps;
+    }[];
+}
 
 export interface ProductPageInterface extends PageInterface {
-    _id?: string;
-    product: CardProductProps;
-};
+    product: {
+        _id?: string;
+        title: string;
+        sizes?: SizeProps[];
+        subtitle?: string;
+        brand?: string;
+        photos?: {
+            id: string;
+            lg: string;
+        }[];
+        price?: number;
+        salePrice?: number;
+        modelId?: string;
+        badges?: string[];
+        rating?: number;
+        gender: 'M' | 'W';
+        purpose?: string[];
+        isDiscount?: boolean;
+        isRecommend?: boolean;
+        info?: {
+            _id: string;
+            title: string;
+            text: string;
+        }[];
+    }
+}
+
+export type SizeProps = {
+    value: string;
+    text: string;
+    isAvailable: boolean;
+}
