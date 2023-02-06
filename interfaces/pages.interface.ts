@@ -1,11 +1,11 @@
-import { BreadcrumbsAppProps } from '../components/BreadcrumbsApp/BreadcrumbsApp.props';
+import { BreadcrumbsAppItemProps } from '../components/BreadcrumbsApp/BreadcrumbsApp.props';
 import { CardProductProps } from '../components/CardProduct/CardProduct.props';
 import { SliderAppProps } from '../components/SliderApp/SliderApp.props';
 import { Meta } from './common.interfaces';
 
 export interface PageInterface {
     meta?: Meta;
-    breadcrumbs?: BreadcrumbsAppProps;
+    breadcrumbs?: BreadcrumbsAppItemProps[];
 }
 
 export interface MainPageInterface extends PageInterface {

@@ -2,8 +2,7 @@ import { BreadcrumbsAppItemProps, BreadcrumbsAppProps } from './BreadcrumbsApp.p
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from 'next/link';
 
-// TODO: Вернуть пропсы { items }: BreadcrumbsAppProps и решить ошибку
-export const BreadcrumbsApp = ({ items }: any) => {
+export const BreadcrumbsApp = ({ items, ...props }: BreadcrumbsAppProps): JSX.Element => {
     const createItem = (element: BreadcrumbsAppItemProps) => {
         if (element.url) {
             return <Link key={element.anchor} href={element.url}>{element.anchor}</Link>;
@@ -18,6 +17,7 @@ export const BreadcrumbsApp = ({ items }: any) => {
             sx={{
                 fontSize: '14px',
             }}
+            {...props}
         >
             {items.map((item: BreadcrumbsAppItemProps) => (
                 createItem(item)
