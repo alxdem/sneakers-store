@@ -1,6 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { BreadcrumbsProps } from '@mui/material';
 
-export interface BreadcrumbsAppProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface BreadcrumbsAppProps extends BreadcrumbsProps {
     items: BreadcrumbsAppItemProps[];
 }
 

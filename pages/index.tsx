@@ -5,53 +5,12 @@ import { SliderApp } from '../components/SliderApp/SliderApp';
 import { GetStaticProps } from 'next';
 import { MainPageInterface } from '../interfaces/pages.interface';
 import { API } from '../helpers/api';
-import { Box, Container, Typography, Grid } from '@mui/material';
-import { CardProduct } from '../components/CardProduct/CardProduct';
+import { Box, Container, Typography } from '@mui/material';
+import { ProductResult } from '../components/ProductResult/ProductResult';
 
 export default function Home({ meta, mainSlider, recommend }: MainPageInterface) {
     const { title, description } = meta || {};
     const { items: sliderItems } = mainSlider || {};
-
-    const createRecommended = () => {
-        if (!recommend || recommend.length < 1) return <></>;
-
-        return (
-            <Box sx={{
-                my: { xs: 3, sm: 5, lg: 6 }
-            }}>
-                <Container maxWidth='xl'>
-                    <Typography component='h2' variant='h4' color='text.main'>Recommended</Typography>
-                    <Grid container
-                        columnSpacing={2}
-                        rowSpacing={2}
-                        mt={{ xs: 2 }}
-                    >
-                        {recommend.map(item => {
-                            const { title, subtitle, salePrice, price, rating, badges, modelId, photos } = item.product || {};
-                            const createPreview = () => {
-                                return photos && photos[0] ? photos[0]?.lg : '';
-                            };
-
-                            return (
-                                <Grid key={item._id} item xs={12} sm={6} md={3}>
-                                    <CardProduct
-                                        photo={createPreview()}
-                                        title={title}
-                                        subtitle={subtitle}
-                                        salePrice={salePrice}
-                                        price={price}
-                                        rating={rating}
-                                        badges={badges}
-                                        url={`${modelId}/${item._id}`}
-                                    />
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
-                </Container>
-            </Box>
-        );
-    };
 
     return (
         <Layout>
@@ -62,7 +21,21 @@ export default function Home({ meta, mainSlider, recommend }: MainPageInterface)
 
             {sliderItems && Boolean(sliderItems.length) && <SliderApp items={sliderItems} />}
 
-            {createRecommended()}
+            <Box sx={{
+                my: { xs: 3, sm: 5, lg: 6 }
+            }}>
+                <Container maxWidth='xl'>
+                    <Typography
+                        component='h2'
+                        variant='h4'
+                        color='text.main'
+                        sx={{ mb: { xs: 2, sm: 4 } }}
+                    >
+                        Recommended
+                    </Typography>
+                    {recommend && <ProductResult items={recommend} />}
+                </Container>
+            </Box>
         </Layout>
     );
 }

@@ -4,7 +4,6 @@ import { ParsedUrlQuery } from 'querystring';
 import Head from 'next/head';
 import { API } from '../../helpers/api';
 import Layout from '../../layout/Layout';
-import { CardProductProps } from '../../components/CardProduct/CardProduct.props';
 import { Container } from '@mui/system';
 import { BreadcrumbsApp } from '../../components/BreadcrumbsApp/BreadcrumbsApp';
 import { ProductPageInterface } from '../../interfaces/pages.interface';
@@ -35,9 +34,7 @@ export default function ProductPage({ meta, product, breadcrumbs }: ProductPageI
             </Head>
             <Container maxWidth='lg'>
                 {breadcrumbs && (
-                    <Box sx={{ mt: '20px' }}>
-                        <BreadcrumbsApp items={breadcrumbs} />
-                    </Box>
+                    <BreadcrumbsApp sx={{ mt: '20px' }} items={breadcrumbs} />
                 )}
 
                 <Box sx={{
@@ -215,7 +212,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsC
 
     try {
         const { data } = await axios.get(API.products + params.id);
-        // const { data } = await axios.get(API.pages.product);
 
         return {
             props: data
