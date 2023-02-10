@@ -1,5 +1,4 @@
 export interface CardProductProps {
-    _id?: string;
     title: string;
     url?: string;
     subtitle?: string;

@@ -65,7 +65,7 @@ export const CardProduct = ({ photo, title, badges, subtitle, price, salePrice, 
                         gap: 1,
                         my: '4px'
                     }}>
-                        {price &&
+                        {Boolean(price) && price !== salePrice &&
                             <Typography
                                 variant="body2"
                                 component="div"
