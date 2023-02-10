@@ -11,7 +11,7 @@ export const ProductResult = ({ items }: ProductResultProps) => {
             rowSpacing={2}
         >
             {items.map(item => {
-                const { title, subtitle, salePrice, price, rating, badges, modelId, photo, _id } = item.product || {};
+                const { title, subtitle, salePrice, price, rating, badges, modelId, photo } = item.product || {};
 
                 return (
                     <Grid key={item._id} item xs={12} sm={6} md={3}>
@@ -23,7 +23,7 @@ export const ProductResult = ({ items }: ProductResultProps) => {
                             price={price}
                             rating={rating}
                             badges={badges}
-                            url={`${modelId}/${_id}`}
+                            url={`${modelId}/${item._id}`}
                         />
                     </Grid>
                 );

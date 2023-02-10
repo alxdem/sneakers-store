@@ -18,7 +18,6 @@ export interface MainPageInterface extends PageInterface {
 
 export interface ProductPageInterface extends PageInterface {
     product: {
-        _id?: string;
         title: string;
         sizes?: SizeProps[];
         subtitle?: string;

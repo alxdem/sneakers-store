@@ -15,8 +15,6 @@ import { SliderProduct } from '../../components/SliderProduct/SliderProduct';
 import { AccordionApp } from '../../components/AccordionApp/AccordionApp';
 
 export default function ProductPage({ meta, product, breadcrumbs }: ProductPageInterface) {
-    // TODO: Переписать интерфейс для страницы 
-
     const { title: metaTitle, description: metaDescription } = meta || {};
     const { title, subtitle, salePrice, price, rating, sizes, photos, info } = product || {};
 
@@ -98,7 +96,7 @@ export default function ProductPage({ meta, product, breadcrumbs }: ProductPageI
                                 >
                                     {priceFormatt(salePrice)}
                                 </Typography>}
-                            {price &&
+                            {Boolean(price) && price !== salePrice &&
                                 <Typography
                                     component='div'
                                     variant='subtitle1'
@@ -108,7 +106,7 @@ export default function ProductPage({ meta, product, breadcrumbs }: ProductPageI
                                         opacity: 0.7,
                                     }}
                                 >
-                                    {priceFormatt(price)}
+                                    {price && priceFormatt(price)}
                                 </Typography>}
 
                             {rating &&
@@ -180,7 +178,6 @@ export default function ProductPage({ meta, product, breadcrumbs }: ProductPageI
                         >
                             {selectedSize ? 'Add to card' : 'Select size'}
                         </Button>
-
                     </Box>
                 </Box>
             </Container>
